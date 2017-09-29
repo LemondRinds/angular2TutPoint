@@ -1,0 +1,15 @@
+<div ngNonBindable>// using ngNonBindable to prevent bugs</div>
+<div ngNonBindable>// interpolation {{}}</div>
+<h1>Hello {{name}}</h1>
+<div ngNonBindable>// structural directive *directive='expression'</div>
+<div *ngIf='appStatus'>{{appTitle}}</div>
+<div ngNonBindable>// property binding [element property]='expression'</div>
+<div *ngIf='appStatus' [innerHtml]='appTitle'></div>
+<div ngNonBindable>// *ngFor using let for scope safety</div>
+<div *ngFor = 'let lst of appList'> 
+   <ul> 
+      <li>{{lst.ID}}</li> 
+      <li>{{lst.Name}}</li> 
+   </ul> 
+</div> 
+<div ngNonBindable>// pause at https://www.tutorialspoint.com/angular2/angular2_crud_operations_using_http.htm</div>
