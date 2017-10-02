@@ -1,4 +1,14 @@
 import { Component } from '@angular/core';
+// import junk for products and datasource
+import { IProduct } from './product';
+import { ProductService } from './products.service';
+import { appService } from './app.service';
+import { Http , Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+// routing tut
+import { Appproduct } from './product.component';
+import { AppInventory } from './inventory.component';
 // metadata for the component
 @Component({
 	// 'css like' selector, angular creates
@@ -6,6 +16,8 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   // template url
   templateUrl: 'app/app.component.html',
+  // data provider
+  providers: [ProductService],
 })
 // das class
 export class AppComponent  {
@@ -28,4 +40,13 @@ export class AppComponent  {
       "ID": "2",
       "Name" : "Two"
    } ];
+   // junk for products service
+   iproducts: IProduct[];
+   constructor(private _product: ProductService) {
+   }
+   
+   ngOnInit() : void {
+      this._product.getproducts()
+      .subscribe(iproducts => this.iproducts = iproducts);
+   }
 }
